@@ -74,4 +74,6 @@ class LocalStorageService {
   }
 }
 
-export default new LocalStorageService();
+// Create and export instance
+const localStorageService = new LocalStorageService();
+export default localStorageService;

@@ -2,7 +2,10 @@ import { CONFIG } from "../config";
 
 class AnalyticsService {
   constructor() {
-    this.enabled = CONFIG.analytics.enabled && typeof gtag !== "undefined";
+    this.enabled =
+      CONFIG.analytics.enabled &&
+      typeof window !== "undefined" &&
+      typeof window.gtag !== "undefined";
     this.sessionStartTime = Date.now();
   }
 
@@ -10,8 +13,8 @@ class AnalyticsService {
     if (!this.enabled) return;
 
     // Initialize analytics
-    if (typeof gtag !== "undefined" && CONFIG.analytics.gaId) {
-      gtag("config", CONFIG.analytics.gaId, {
+    if (typeof window.gtag !== "undefined" && CONFIG.analytics.gaId) {
+      window.gtag("config", CONFIG.analytics.gaId, {
         page_title: document.title,
         page_location: window.location.href,
       });
@@ -28,8 +31,8 @@ class AnalyticsService {
     }
 
     try {
-      if (typeof gtag !== "undefined") {
-        gtag("event", eventName, {
+      if (typeof window.gtag !== "undefined") {
+        window.gtag("event", eventName, {
           custom_map: { dimension1: "feelgreatfoodie" },
           ...parameters,
         });
@@ -66,4 +69,6 @@ class AnalyticsService {
   }
 }
 
-export default new AnalyticsService();
+// Create and export instance
+const analyticsService = new AnalyticsService();
+export default analyticsService;

@@ -161,11 +161,11 @@ class PerformanceService {
   }
 
   reportMetrics() {
-    // Report to analytics service
-    if (typeof gtag !== "undefined") {
+    // Report to analytics service if gtag is available
+    if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
       Object.entries(this.metrics).forEach(([key, value]) => {
         if (value > 0) {
-          gtag("event", "timing_complete", {
+          window.gtag("event", "timing_complete", {
             name: key,
             value: Math.round(value),
           });

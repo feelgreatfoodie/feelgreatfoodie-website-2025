@@ -17,16 +17,18 @@ const SearchBox = memo(
     const debouncedSearch = useRef(debounce(onSearch, debounceMs));
 
     useEffect(() => {
-      if (value !== initialValue) {
-        setValue(initialValue);
-      }
+      setValue(initialValue);
     }, [initialValue]);
 
     useEffect(() => {
-      if (onSearch) {
+      debouncedSearch.current = debounce(onSearch, debounceMs);
+    }, [onSearch, debounceMs]);
+
+    useEffect(() => {
+      if (onSearch && value !== initialValue) {
         debouncedSearch.current(value);
       }
-    }, [value, onSearch]);
+    }, [value, onSearch, initialValue]);
 
     const handleChange = (e) => {
       setValue(e.target.value);
@@ -59,9 +61,7 @@ const SearchBox = memo(
         <input
           ref={inputRef}
           type="search"
-          className={`form-control ${sizeClasses[size]} ${
-            isFocused ? "shadow" : ""
-          }`}
+          className={`form-control ${sizeClasses[size]} ${isFocused ? "shadow" : ""}`}
           placeholder={placeholder}
           value={value}
           onChange={handleChange}

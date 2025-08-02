@@ -17,8 +17,8 @@ class ErrorBoundary extends React.Component {
     });
 
     // Log error to analytics service
-    if (typeof gtag !== "undefined") {
-      gtag("event", "exception", {
+    if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
+      window.gtag("event", "exception", {
         description: error.toString(),
         fatal: false,
       });

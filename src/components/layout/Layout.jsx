@@ -36,16 +36,40 @@ const Layout = memo(({ children, navigationProps = {} }) => {
                 recipes passed down through generations.
               </p>
               <div className="social-links">
-                <a href="#" className="text-light me-3" aria-label="Facebook">
+                <a
+                  href="https://facebook.com/feelgreatfoodie"
+                  className="text-light me-3"
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-facebook-f fa-lg" />
                 </a>
-                <a href="#" className="text-light me-3" aria-label="Instagram">
+                <a
+                  href="https://instagram.com/feelgreatfoodie"
+                  className="text-light me-3"
+                  aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-instagram fa-lg" />
                 </a>
-                <a href="#" className="text-light me-3" aria-label="Twitter">
+                <a
+                  href="https://twitter.com/feelgreatfoodie"
+                  className="text-light me-3"
+                  aria-label="Twitter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-twitter fa-lg" />
                 </a>
-                <a href="#" className="text-light me-3" aria-label="YouTube">
+                <a
+                  href="https://youtube.com/feelgreatfoodie"
+                  className="text-light me-3"
+                  aria-label="YouTube"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-youtube fa-lg" />
                 </a>
               </div>

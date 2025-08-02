@@ -1,6 +1,8 @@
-import { CONFIG } from "../config";
-
 class ApiService {
+  constructor() {
+    this.baseURL = process.env.REACT_APP_API_URL || "";
+  }
+
   async request(endpoint, options = {}) {
     const defaultOptions = {
       headers: {
@@ -18,7 +20,7 @@ class ApiService {
     };
 
     try {
-      const response = await fetch(endpoint, config);
+      const response = await fetch(`${this.baseURL}${endpoint}`, config);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -68,4 +70,6 @@ class ApiService {
   }
 }
 
-export default new ApiService();
+// Create and export instance
+const apiService = new ApiService();
+export default apiService;

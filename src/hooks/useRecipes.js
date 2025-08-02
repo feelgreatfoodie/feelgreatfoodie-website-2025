@@ -11,7 +11,7 @@ export const useRecipes = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("name");
 
-  const { showSuccess, showError } = useNotifications();
+  const { showSuccess } = useNotifications();
 
   // Load favorites from localStorage on mount
   useEffect(() => {
