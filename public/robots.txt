@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://feelgreatfoodie.surge.sh/sitemap.xml

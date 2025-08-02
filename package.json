@@ -53,8 +53,11 @@
     "test:coverage": "npm test -- --coverage --watchAll=false",
     "test:ci": "CI=true npm test -- --coverage --watchAll=false",
     "serve": "npx serve -s build -l 3000",
-    "lighthouse": "npx lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html",
-    "clean": "rm -rf build node_modules package-lock.json && npm install"
+    "lighthouse": "npx lighthouse https://feelgreatfoodie.surge.sh --output html --output-path ./lighthouse-report.html",
+    "clean": "rm -rf build node_modules package-lock.json && npm install",
+    "predeploy": "npm run build",
+    "deploy": "surge --project ./build --domain feelgreatfoodie.surge.sh",
+    "deploy:prod": "npm run build && surge --project ./build --domain feelgreatfoodie.surge.sh"
   },
   "engines": {
     "node": ">=16.0.0",
